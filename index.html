@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="Punto de venta e inventario de U Morcant & Co.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Morcant Punto</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <div class="wordmark"><strong>U MORCANT</strong><span>&amp; CO.</span><small>POINT OF SALE</small></div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="sale"><span>01</span>Venta</button>
+        <button class="nav-item" data-view="inventory"><span>02</span>Inventario</button>
+        <button class="nav-item" data-view="history"><span>03</span>Historial</button>
+        <button class="nav-item" data-view="dashboard"><span>04</span>Resumen</button>
+        <button class="nav-item" data-view="settings"><span>05</span>Ajustes</button>
+      </nav>
+      <div class="sidebar-foot">
+        <button id="installApp" class="install-button" hidden>Instalar aplicación</button>
+        <span id="connectionStatus"><i></i> Disponible sin conexión</span>
+        <small>Datos guardados en este dispositivo</small>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <button id="menuToggle" class="icon-button menu-toggle" aria-label="Abrir menú">☰</button>
+        <div><p id="eyebrow">Punto de venta</p><h1 id="viewTitle">Nueva venta</h1></div>
+        <div class="top-actions"><div class="business-name" id="businessNameHeader">Mi negocio</div><div class="clock"><strong id="dateText"></strong><span id="timeText"></span></div></div>
+      </header>
+
+      <section id="sale" class="view active">
+        <div class="sale-grid">
+          <section class="surface catalog-panel">
+            <div class="section-head"><div><span class="section-index">CATÁLOGO</span><h2>Productos</h2></div><label class="search"><span>⌕</span><input id="productSearch" type="search" placeholder="Buscar por nombre o SKU" autocomplete="off"></label></div>
+            <div id="categoryFilters" class="filters"></div>
+            <div id="productGrid" class="product-grid"></div>
+          </section>
+
+          <aside class="surface checkout-panel">
+            <div class="section-head compact"><div><span class="section-index">TICKET ACTUAL</span><h2>Venta</h2></div><button id="clearCart" class="text-button danger">Vaciar</button></div>
+            <div id="cartItems" class="cart-items"></div>
+            <div class="checkout-summary">
+              <div><span>Unidades</span><strong id="cartUnits">0</strong></div>
+              <div class="grand-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+              <label class="field-label" for="cashReceived">Efectivo recibido</label>
+              <div class="cash-input"><span>$</span><input id="cashReceived" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+              <div id="changeRow" class="change-row"><span>Cambio</span><strong id="changeAmount">$0.00</strong></div>
+              <button id="completeSale" class="primary-button" disabled>Cobrar venta</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="inventory" class="view">
+        <div class="surface content-panel">
+          <div class="section-head"><div><span class="section-index">CONTROL</span><h2>Inventario</h2><p>Administra productos, precios, fotografías y existencias.</p></div><button id="newProduct" class="primary-button small">Nuevo producto</button></div>
+          <div class="inventory-toolbar"><label class="search wide"><span>⌕</span><input id="inventorySearch" type="search" placeholder="Buscar inventario"></label><span id="stockSummary"></span></div>
+          <div id="inventoryList" class="inventory-list"></div>
+        </div>
+      </section>
+
+      <section id="history" class="view">
+        <div class="surface content-panel">
+          <div class="section-head"><div><span class="section-index">REGISTRO</span><h2>Historial de ventas</h2><p>Consulta cada cobro, sus productos y el cambio entregado.</p></div></div>
+          <div id="historyList" class="history-list"></div>
+        </div>
+      </section>
+
+      <section id="dashboard" class="view">
+        <div id="metricGrid" class="metric-grid"></div>
+        <div class="dashboard-grid">
+          <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">HOY</span><h2>Productos vendidos</h2></div></div><div id="topProducts" class="ranking"></div></section>
+          <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">ALERTA</span><h2>Existencias bajas</h2></div></div><div id="lowStockList" class="ranking"></div></section>
+        </div>
+      </section>
+
+      <section id="settings" class="view">
+        <div class="settings-grid">
+          <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">NEGOCIO</span><h2>Personalización</h2></div></div><form id="businessForm" class="settings-form"><label>Nombre del negocio<input id="businessName" maxlength="70" required></label><label>Mensaje del ticket<input id="receiptMessage" maxlength="100" placeholder="Gracias por su compra"></label><button class="primary-button small">Guardar cambios</button></form></section>
+          <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">RESPALDO</span><h2>Datos</h2></div></div><p class="setting-copy">Exporta inventario e historial para conservar una copia o mover la app a otro dispositivo.</p><div class="setting-actions"><button id="exportData" class="secondary-button">Exportar respaldo</button><label class="secondary-button file-button">Importar respaldo<input id="importData" type="file" accept="application/json"></label><button id="resetApp" class="text-button danger">Borrar todos los datos</button></div></section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <form id="productForm" class="dialog">
+      <div class="dialog-head"><div><span class="section-index">INVENTARIO</span><h2 id="productModalTitle">Nuevo producto</h2></div><button id="closeProductModal" type="button" class="icon-button" aria-label="Cerrar">×</button></div>
+      <div class="product-editor">
+        <div class="photo-editor"><img id="productPreview" alt="Vista previa del producto"><label class="secondary-button file-button">Seleccionar fotografía<input id="productPhoto" type="file" accept="image/*"></label><small>La imagen se comprime y se guarda en el dispositivo.</small></div>
+        <div class="form-grid"><label>Nombre<input id="productName" required maxlength="60"></label><label>SKU<input id="productSku" required maxlength="30"></label><label>Categoría<input id="productCategory" required maxlength="30" placeholder="Bebidas"></label><label>Precio<input id="productPrice" required type="number" min="0.01" step="0.01"></label><label>Existencia<input id="productStock" required type="number" min="0" step="1"></label><label>Alerta de existencia<input id="productLowStock" required type="number" min="0" step="1" value="3"></label></div>
+      </div>
+      <div class="dialog-actions"><button id="cancelProduct" type="button" class="secondary-button">Cancelar</button><button class="primary-button small">Guardar producto</button></div>
+    </form>
+  </div>
+
+  <div id="receiptModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="receiptTitle">
+    <div class="dialog receipt-dialog"><div class="dialog-head"><div><span class="section-index">VENTA COMPLETADA</span><h2 id="receiptTitle">Ticket</h2></div><button id="closeReceipt" class="icon-button" aria-label="Cerrar">×</button></div><div id="receiptContent"></div><div class="dialog-actions"><button id="printReceipt" class="secondary-button">Imprimir</button><button id="finishReceipt" class="primary-button small">Terminar</button></div></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
