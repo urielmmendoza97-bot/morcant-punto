@@ -1,4 +1,4 @@
-# Morcant Punto
+# Morcant Uno
 
 Punto de venta instalable de **U Morcant & Co.** para pequeños negocios.
 
@@ -7,6 +7,8 @@ Punto de venta instalable de **U Morcant & Co.** para pequeños negocios.
 - Registro de ventas en efectivo y cálculo automático del cambio.
 - Inventario con existencias, alertas, SKU, categorías y fotografías.
 - Historial de ventas y tickets imprimibles.
+- Anulación, eliminación individual y limpieza completa del historial.
+- Apariencia oscura o clara guardada en el dispositivo.
 - Resumen diario de ingresos, unidades y productos vendidos.
 - Respaldo e importación de datos en JSON.
 - Funcionamiento sin conexión e instalación como PWA.

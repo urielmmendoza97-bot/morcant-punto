@@ -7,13 +7,14 @@
   <meta name="description" content="Punto de venta e inventario de U Morcant & Co.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('morcant_theme')||'dark'}catch{}</script>
   <link rel="stylesheet" href="styles.css">
-  <title>Morcant Punto</title>
+  <title>Morcant Uno</title>
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" aria-label="Navegación principal">
-      <div class="wordmark"><strong>U MORCANT</strong><span>&amp; CO.</span><small>POINT OF SALE</small></div>
+      <div class="wordmark"><strong>U MORCANT</strong><span>&amp; CO.</span><small>UNO</small></div>
       <nav class="nav-list">
         <button class="nav-item active" data-view="sale"><span>01</span>Venta</button>
         <button class="nav-item" data-view="inventory"><span>02</span>Inventario</button>
@@ -32,7 +33,7 @@
       <header class="topbar">
         <button id="menuToggle" class="icon-button menu-toggle" aria-label="Abrir menú">☰</button>
         <div><p id="eyebrow">Punto de venta</p><h1 id="viewTitle">Nueva venta</h1></div>
-        <div class="top-actions"><div class="business-name" id="businessNameHeader">Mi negocio</div><div class="clock"><strong id="dateText"></strong><span id="timeText"></span></div></div>
+        <div class="top-actions"><div class="business-name" id="businessNameHeader">Mi negocio</div><button id="themeToggle" class="icon-button theme-toggle" aria-label="Activar modo claro" title="Cambiar apariencia">☼</button><div class="clock"><strong id="dateText"></strong><span id="timeText"></span></div></div>
       </header>
 
       <section id="sale" class="view active">
@@ -68,7 +69,7 @@
 
       <section id="history" class="view">
         <div class="surface content-panel">
-          <div class="section-head"><div><span class="section-index">REGISTRO</span><h2>Historial de ventas</h2><p>Consulta cada cobro, sus productos y el cambio entregado.</p></div></div>
+          <div class="section-head"><div><span class="section-index">REGISTRO</span><h2>Historial de ventas</h2><p>Consulta, anula o elimina registros de ventas.</p></div><button id="clearHistory" class="secondary-button danger">Limpiar historial</button></div>
           <div id="historyList" class="history-list"></div>
         </div>
       </section>

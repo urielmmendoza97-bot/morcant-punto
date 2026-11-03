@@ -1,6 +1,6 @@
 {
-  "name": "Morcant Punto",
-  "short_name": "Morcant Punto",
+  "name": "Morcant Uno",
+  "short_name": "Morcant Uno",
   "description": "Punto de venta e inventario de U Morcant & Co.",
   "start_url": "./",
   "display": "standalone",
