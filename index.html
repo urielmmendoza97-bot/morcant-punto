@@ -8,7 +8,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('morcant_theme')||'dark'}catch{}</script>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
   <title>Morcant Uno</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
       <header class="topbar">
         <button id="menuToggle" class="icon-button menu-toggle" aria-label="Abrir menú">☰</button>
         <div><p id="eyebrow">Punto de venta</p><h1 id="viewTitle">Nueva venta</h1></div>
-        <div class="top-actions"><div class="business-name" id="businessNameHeader">Mi negocio</div><button id="themeToggle" class="icon-button theme-toggle" aria-label="Activar modo claro" title="Cambiar apariencia">☼</button><div class="clock"><strong id="dateText"></strong><span id="timeText"></span></div></div>
+        <div class="top-actions"><div class="business-name" id="businessNameHeader">Mi negocio</div><button id="themeToggle" class="theme-toggle" aria-label="Activar modo claro"><span id="themeIcon">☼</span><span id="themeLabel">Modo claro</span></button><div class="clock"><strong id="dateText"></strong><span id="timeText"></span></div></div>
       </header>
 
       <section id="sale" class="view active">
@@ -106,6 +106,6 @@
     <div class="dialog receipt-dialog"><div class="dialog-head"><div><span class="section-index">VENTA COMPLETADA</span><h2 id="receiptTitle">Ticket</h2></div><button id="closeReceipt" class="icon-button" aria-label="Cerrar">×</button></div><div id="receiptContent"></div><div class="dialog-actions"><button id="printReceipt" class="secondary-button">Imprimir</button><button id="finishReceipt" class="primary-button small">Terminar</button></div></div>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

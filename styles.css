@@ -72,3 +72,13 @@ html[data-theme="light"] .modal{background:rgba(36,34,30,.42)}html[data-theme="l
 html[data-theme="light"] .toast{background:#222;color:#fff}
 
 @media(max-width:760px){.topbar{height:64px}.nav-item{padding:7px 2px;font-size:10px}.top-actions{gap:8px}.theme-toggle{display:block!important}.section-head{gap:10px}#clearHistory{padding:9px 10px;font-size:9px}html[data-theme="light"] .sidebar{background:rgba(244,241,235,.96);border-color:#d8d4cb}html[data-theme="light"] .topbar{background:rgba(244,241,235,.94)}}
+
+/* Legibilidad y controles visibles */
+.wordmark strong{background:none!important;-webkit-background-clip:initial;color:#f5f4f0!important;font-weight:600;letter-spacing:.105em}
+.wordmark span{color:#d7d5cf!important;font-size:10px;font-weight:600;letter-spacing:.22em}.wordmark small{color:#9b9b96;font-weight:600}
+.theme-toggle{width:auto;min-width:104px;height:34px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 11px;border:1px solid var(--line2);border-radius:8px;background:#121314;color:var(--text);font-size:10px;font-weight:600;white-space:nowrap}
+.theme-toggle:hover{border-color:#55595b}.theme-toggle #themeIcon{font-size:14px;line-height:1}.theme-toggle #themeLabel{letter-spacing:.02em}
+html[data-theme="light"] .wordmark strong,html[data-theme="light"] .wordmark span{color:#171715!important}html[data-theme="light"] .wordmark small{color:#66635d}
+html[data-theme="light"] .theme-toggle{background:#fff;color:#24231f;border-color:#cbc7be}
+@media(max-width:760px){.theme-toggle{min-width:96px;height:32px;padding:0 9px}.theme-toggle #themeLabel{display:inline!important}.top-actions{display:flex}.topbar{gap:8px}}
+@media(max-width:390px){.theme-toggle{min-width:34px;width:34px;padding:0}.theme-toggle #themeLabel{display:none!important}}
