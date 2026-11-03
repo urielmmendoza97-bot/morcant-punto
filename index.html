@@ -8,7 +8,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('morcant_theme')||'dark'}catch{}</script>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
   <title>Morcant Uno</title>
 </head>
 <body>
@@ -54,6 +54,7 @@
               <div class="cash-input"><span>$</span><input id="cashReceived" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
               <div id="changeRow" class="change-row"><span>Cambio</span><strong id="changeAmount">$0.00</strong></div>
               <button id="completeSale" class="primary-button" disabled>Cobrar venta</button>
+              <button id="openTransfer" class="secondary-button transfer-button" disabled>Cobrar por transferencia</button>
             </div>
           </aside>
         </div>
@@ -86,6 +87,7 @@
         <div class="settings-grid">
           <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">NEGOCIO</span><h2>Personalización</h2></div></div><form id="businessForm" class="settings-form"><label>Nombre del negocio<input id="businessName" maxlength="70" required></label><label>Mensaje del ticket<input id="receiptMessage" maxlength="100" placeholder="Gracias por su compra"></label><button class="primary-button small">Guardar cambios</button></form></section>
           <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">RESPALDO</span><h2>Datos</h2></div></div><p class="setting-copy">Exporta inventario e historial para conservar una copia o mover la app a otro dispositivo.</p><div class="setting-actions"><button id="exportData" class="secondary-button">Exportar respaldo</button><label class="secondary-button file-button">Importar respaldo<input id="importData" type="file" accept="application/json"></label><button id="resetApp" class="text-button danger">Borrar todos los datos</button></div></section>
+          <section class="surface content-panel"><div class="section-head compact"><div><span class="section-index">TRANSFERENCIAS</span><h2>Cuenta para cobros</h2></div></div><p class="setting-copy">Solo se guarda la CLABE para recibir pagos. Nunca escribas contraseñas, NIP ni códigos bancarios.</p><form id="transferSettingsForm" class="settings-form"><label>Beneficiario<input id="transferBeneficiary" maxlength="50" placeholder="Nombre del titular"></label><label>Banco<input id="transferBank" maxlength="35" placeholder="Nombre del banco"></label><label>CLABE interbancaria<input id="transferClabe" inputmode="numeric" maxlength="18" placeholder="18 dígitos"></label><button class="primary-button small">Guardar cuenta</button></form></section>
         </div>
       </section>
     </main>
@@ -105,7 +107,10 @@
   <div id="receiptModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="receiptTitle">
     <div class="dialog receipt-dialog"><div class="dialog-head"><div><span class="section-index">VENTA COMPLETADA</span><h2 id="receiptTitle">Ticket</h2></div><button id="closeReceipt" class="icon-button" aria-label="Cerrar">×</button></div><div id="receiptContent"></div><div class="dialog-actions"><button id="printReceipt" class="secondary-button">Imprimir</button><button id="finishReceipt" class="primary-button small">Terminar</button></div></div>
   </div>
+  <div id="transferModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="transferTitle">
+    <div class="dialog transfer-dialog"><div class="dialog-head"><div><span class="section-index">COBRO DIGITAL</span><h2 id="transferTitle">Transferencia</h2></div><button id="closeTransfer" class="icon-button" aria-label="Cerrar">×</button></div><div class="transfer-content"><canvas id="transferQr" width="246" height="246" aria-label="Código QR de transferencia"></canvas><div class="transfer-details"><span>Total a transferir</span><strong id="transferAmount">$0.00</strong><p id="transferAccount"></p><small>Referencia</small><b id="transferReference"></b><button id="copyTransfer" class="secondary-button">Copiar datos</button></div></div><p class="transfer-note">Verifica el depósito en tu banca antes de confirmar la venta. Morcant Uno no se conecta a tu banco.</p><div class="dialog-actions"><button id="cancelTransfer" class="secondary-button">Cancelar</button><button id="confirmTransfer" class="primary-button small">Confirmar depósito</button></div></div>
+  </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
